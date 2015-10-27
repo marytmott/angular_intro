@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="contacts">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <title>Contacts App</title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+</head>
+<body>
+  <div ng-controller="contactsInfo">
+    <h1>Contacts App</h1>
+    <label>Name
+      <input type="text" placeholder="name" ng-model="newContact.name" />
+    </label>
+    <label>Email
+      <input type="text" placeholder="email" ng-model="newContact.email" />
+    </label>
+    <label>Phone
+      <input type="text" placeholder="phone" ng-model="newContact.phone" />
+    </label>
+    <button ng-click="addContact()">Add Contact</button><br />
+
+    <label>Search
+      <input type="text" placeholder="name" ng-model="search.name" />
+    </label>
+
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="contact in contacts | filter: search">
+          <td ng-repeat="(type, info) in contact">
+            {{info}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script src="contacts.js"></script>
+</body>
+</html>

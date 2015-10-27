@@ -1,0 +1,9 @@
+.win {
+  background-color: green;
+/*  width: 300px;
+  height: 300px;*/
+}
+
+.lost {
+  background-color: red;
+}
