@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="firstApp">
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+</head>
+<body>
+  <div ng-controller="MyFirstController">
+    <h1>The number is: {{ number }}</h1>
+  <!--   <input ng-model="name" type="text" placeholder="What is your name"> -->
+    <button ng-click="pickRandomNumber()">Pick Random Number</button>
+
+    <h4>Word Reverser</h4>
+    <input type="text" ng-model="text" />
+    <p>Your word is: {{ text }}</p>
+    <button ng-click="reverse()">Reverse!</button>
+  </div>
+
+
+
+
+  <script>
+    var app = angular.module("firstApp", []);
+    app.controller("MyFirstController", function($scope) {
+      $scope.number = 5;
+      $scope.pickRandomNumber = function() {  //need to associate this directly on to the scope
+        $scope.number = Math.floor(Math.random() * 10) + 1;
+      };
+      $scope.reverse = function() {
+        // var reversed = '';
+        // for (var i = $scope.text.length - 1; i >= 0; i--) {
+        //   reversed += $scope.text[i];
+        // }
+        $scope.text = $scope.text.split('').reverse().join('');
+        // $scope.text = reversed;
+      };
+    });
+  </script>
+
+</body>
+</html>
+
+

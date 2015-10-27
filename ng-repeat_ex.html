@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="examples">
+<head>
+  <title></title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+</head>
+<body>
+  <div ng-controller="stuff">
+    <ul>
+      <li ng-repeat="name in names">
+        {{name}}
+      </li>
+    </ul>
+
+    <ul>
+      <li ng-repeat="symbol in symbols">
+        {{symbol}}
+      </li>
+    </ul>
+
+    <p><span ng-repeat="number in numbers track by $index">{{ number }} </span></p>
+
+    <p><span ng-repeat="(key, value) in myObj">{{ key }} </span></p>
+  </div>
+
+  <script>
+    angular.module('examples', []).controller('stuff', function($scope) {
+      $scope.names = ["Harry", "Ron", "Hermione", "Sirius", "Hedwig", "Tonks"];
+      $scope.symbols = ["&spades;", "&clubs;", "&hearts;", "&diams;"];
+      $scope.numbers = [1,1,2,5,6,9,9,9];
+      $scope.myObj = {
+        food: 'pizza',
+        color: 'blue',
+        age: '26'
+      };
+    });
+  </script>
+
+</body>
+</html>

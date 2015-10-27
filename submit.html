@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app='submit'>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <title>Submit Form</title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+  <style type="text/css">
+  .invalid {
+    color: red;
+  }
+  .valid {
+    color: green;
+  }
+  </style>
+</head>
+<body>
+  <div ng-controller="passwordCheck">
+    <input type="password" ng-model="passwordField" ng-init='' ng-class="{invalid: passwordField.length < 6}" ng-class="{valid: passwordField.length >= 6}"/>
+    <p ng-class="{invalid: passwordField.length < 6}" ng-class="{valid: passwordField.length >= 6}">Your password is {{passwordField.length}} characters.</p>
+    <p ng-show="passwordField.length < 6">Password is invalid!</p>
+    <input type="submit" ng-hide="passwordField.length < 6" ng-show="passwordField >= 6"></submit>
+  </div>
+  <script>
+    angular.module('submit', []).controller('passwordCheck', function($scope) {
+      $scope.passwordField = '';
+    });
+  </script>
+</body>
+</html>

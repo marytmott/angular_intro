@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="madLibs">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <title>Mad Libs!</title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+</head>
+<body>
+
+  <div ng-controller="game">
+    <label>Boy's name
+      <input type="text" placeholder="Enter a boy's name..." ng-model="boysName" />
+    </label>
+  </div>
+  <div>
+    <label>Adjective
+      <input type="text" placeholder="Enter an adjective..." ng-model="adj" />
+    </label>
+  </div>
+  <div>
+    <label>Plural Noun
+      <input type="text" placeholder="Enter a plural noun..." ng-model="pNoun1" />
+    </label>
+  </div>
+  <div>
+    <label>An insect, plural
+      <input type="text" placeholder="Enter an insect, plural..." ng-model="insect" />
+    </label>
+  </div>
+  <div>
+    <label>Plural noun
+      <input type="text" placeholder="Enter a plural noun..." ng-model="pNoun2" />
+    </label>
+  </div>
+  <div>
+    <label>A verb ending in "s"
+      <input type="text" placeholder="Enter a verb ending in &quot;s&quot;..." ng-model="verbS" />
+    </label>
+  </div>
+
+  <section>
+    <p>I'm in love with {{ boysName | uppercase }}. He's so {{ adj | uppercase }}! He has big flat {{ pNoun1 | uppercase }} and when our {{ insect | uppercase }} meet, I get {{ pNoun2 | uppercase }}. I've fallen for him like a ton of {{ verbS | uppercase }} and he shuffles for me too, but I think he has another girlfriend. What should I do?</p>
+  </section>
+
+
+  <script src="main.js"></script>
+</body>
+</html>

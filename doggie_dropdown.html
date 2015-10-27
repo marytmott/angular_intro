@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+  <title>Doggies</title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+</head>
+<body>
+  <select name="doggies" ng-model="choice">
+    <option value="I love dogs <3">Dogs</option>
+    <option value="I love cats <3">Cats</option>
+    <option value="Both">Dogs and Cats</option>
+    <option valteue="Neither">Neither</option>
+  </select>
+    <p>{{ choice }}</p>
+
+  <p>{{3.14159265359 | currency:"&euro;" }}</p>
+
+  <input type="text" ng-model="userInput" value="" />
+  <p>whispering: {{ userInput | lowercase }}</p>
+  <p>yelling: {{ userInput | uppercase }}</p>
+
+  <div>How many digits of pi do you want?
+    <select name="digits" ng-model="digits" ng-init="digits=1">
+      <option value=1>1</option>
+      <option value=2>2</option>
+      <option value=3>3</option>
+      <option value=4>4</option>
+      <option value=5>5</option>
+      <option value=6>6</option>
+      <option value=7>7</option>
+    </select>
+    <ng-pluralize count="digits"
+       when="{'1': '1 digit of pi is: {{ 3.14159265359 | number:digits}}.',
+           'other': '{{digits}} digits of pi are: {{ 3.14159265359 | number:digits}}.'}">
+    </ng-pluralize>
+  </div>
+
+
+</body>
+</html>

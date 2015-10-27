@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <title></title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+</head>
+<body>
+  <div ng-show="3 + 4 == 5">
+    3 + 4 isn't 5, don't show
+  </div>
+
+  <div ng-show="3 + 4 == 7">
+    3 + 4 is 7, do show
+  </div>
+
+  <div ng-hide="3 + 4 == 5">
+      3 + 4 isn't 5, don't hide
+  </div>
+
+  <div ng-hide="3 + 4 == 7">
+    3 + 4 is 7, do hide
+  </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="exercises">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <title>Exercises Controller</title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+</head>
+<body>
+  <div ng-controller="exercisesController">
+    <p>My favorite color: {{favColor}}</p>
+    <h3>Seconds in a Century: {{secondsInACentury | number}}</h3>
+    <h3>{{rightNow | date: 'EEEE, MMMM dd, yyyy'}}
+  </div>
+  <script>
+    angular.module('exercises', []).controller('exercisesController', function($scope) {
+      $scope.favColor = 'green';
+      $scope.secondsInACentury = 60 * 60 * 24 * 365 * 100;
+      $scope.rightNow = new Date();
+    });
+  </script>
+</body>
+</html>
