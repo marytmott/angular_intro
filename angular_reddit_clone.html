@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="angularReddit">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <title>Angular Reddit!</title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+  <link rel="stylesheet" href="ang-reddit.css" />
+</head>
+<body>
+  <div ng-controller="redditContent">
+    <div>
+      <h4>Angular Reddit</h4>
+      <h5 ng-click="showPostForm = !showPostForm">+ Submit Post</h5>
+      <form ng-show="showPostForm">
+        <label>Title
+          <input type="text" placeholder="Title" ng-model="newPost.title" autofocus/>
+        </label>
+        <label>Author
+          <input type="text" placeholder="Author" ng-model="newPost.author" />
+        </label>
+        <label>Image URL
+          <input type="text" placeholder="Image URL" ng-model="newPost.imageUrl" />
+        </label><label>Description
+          <input type="text" placeholder="Description" ng-model="newPost.description" />
+        </label>
+        <input type="submit" value="Submit Post" ng-click="addPost()" />
+      </form>
+      <input type="text" placeholder="search" />
+      <p>sort</p>
+    </div>
+    <div ng-repeat="post in posts | orderBy: '+votes'">
+      <img ng-src="{{ post.imageUrl }}" />
+      <span><h4>{{ post. title }}</h4></span>
+      <span ng-click="upVote(post)">up</span>
+      <span ng-click="downVote(post)">down</span>
+      <span>{{ post.votes }}</span>
+      <p>{{ post.author }}</p>
+      <p>{{ post.description }}</p>
+      <span>{{ post.updated }}</span>
+      <span ng-click="showComments = !showComments" ng-pluralize count="post.comments.length"
+          when="{'1': '{{ post.comments.length }} comment',
+             'other': '{{ post.comments.length }} comments'}">
+        </ng-pluralize>
+      </span>
+      <p ng-repeat="comment in post.comments" ng-show="showComments">{{comment.author}} - {{comment.text}}
+      </p>
+      <span ng-click="showCommentForm = !showCommentForm">add comment</span>
+      <form ng-show="showCommentForm">
+        <label>Author
+          <input type="text" placeholder="username" ng-model="newComment.author" />
+        </label>
+        <label>Text
+          <input type="text" placeholder="comment text" ng-model="newComment.text" />
+        </label>
+        <input type="submit" value="Add Comment" ng-click="addComment(post, newComment); newComment = '';" />
+      </form>
+    </div>
+  </div>
+
+
+</body>
+<script src="angReddit.js"></script>
+</html>

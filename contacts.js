@@ -20,6 +20,4 @@ app.controller('contactsInfo', function($scope) {
     //clear out fields
     $scope.newContact = {};
   };
-
-
 });
