@@ -3,32 +3,43 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8" />
   <title>Angular Reddit!</title>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
   <link rel="stylesheet" href="ang-reddit.css" />
+  <link rel="stylesheet" href-"https://cdnjs.cloudflare.com/ajax/libs/foundation-essential/5.5.3/css/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation-essential/5.5.3/css/foundation.min.css" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.3/angular-moment.js"></script>
 </head>
 <body>
   <div ng-controller="redditContent">
     <div>
       <h4>Angular Reddit</h4>
       <h5 ng-click="showPostForm = !showPostForm">+ Submit Post</h5>
-      <form ng-show="showPostForm">
+      <form name="postForm" ng-submit="addPost(postForm.$valid)" ng-show="showPostForm" novalidate>
         <label>Title
-          <input type="text" placeholder="Title" ng-model="newPost.title" autofocus/>
+          <input type="text" name="post[title]" placeholder="Title" ng-model="newPost.title" ng-class="{invalid: postForm['post[title]'].$invalid && submitted}"  required />
         </label>
         <label>Author
-          <input type="text" placeholder="Author" ng-model="newPost.author" />
+          <input type="text" name="post[author]" placeholder="Author" ng-model="newPost.author" ng-class="{invalid: postForm['post[author]'].$invalid && submitted}" required />
         </label>
         <label>Image URL
-          <input type="text" placeholder="Image URL" ng-model="newPost.imageUrl" />
-        </label><label>Description
-          <input type="text" placeholder="Description" ng-model="newPost.description" />
+          <input type="text" name="post[imageUrl]" placeholder="Image URL" ng-model="newPost.imageUrl" ng-class="{invalid: postForm['post[imageUrl]'].$invalid && submitted}" required />
         </label>
-        <input type="submit" value="Submit Post" ng-click="addPost()" />
+        <label>Description
+          <input type="text" name="post[description]" placeholder="Description" ng-model="newPost.description" ng-class="{invalid: postForm['post[description]'].$invalid && submitted}" required />
+        </label>
+        <input type="submit" value="Submit Post" />
       </form>
-      <input type="text" placeholder="search" />
-      <p>sort</p>
+      <input type="text" placeholder="search" ng-model="search" />
+      <p>Sort By:
+        <select ng-model="sortBy">
+          <option value="-votes">Votes</option>
+          <option value="-date">Date</option>
+          <option value="title">Title</option>
+        </select>
+      </p>
     </div>
-    <div ng-repeat="post in posts | orderBy: '+votes'">
+    <div ng-repeat="post in posts | orderBy: sortBy | filter: search ">
       <img ng-src="{{ post.imageUrl }}" />
       <span><h4>{{ post. title }}</h4></span>
       <span ng-click="upVote(post)">up</span>
@@ -36,7 +47,7 @@
       <span>{{ post.votes }}</span>
       <p>{{ post.author }}</p>
       <p>{{ post.description }}</p>
-      <span>{{ post.updated }}</span>
+      <span>{{ post.date.calendar()}}</span>
       <span ng-click="showComments = !showComments" ng-pluralize count="post.comments.length"
           when="{'1': '{{ post.comments.length }} comment',
              'other': '{{ post.comments.length }} comments'}">
