@@ -1,4 +1,4 @@
-var app = angular.module('contacts', []);
+var app = angular.module('contacts', ['ngRoute']);
 app.controller('contactsInfo', function($scope) {
   $scope.contacts = [
     {
