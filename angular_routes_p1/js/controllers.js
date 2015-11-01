@@ -8,7 +8,11 @@ app.controller('exercisesController', ['$scope', function($scope) {
   $scope.secondsInACentury = 60 * 60 * 24 * 365 * 100;
   $scope.rightNow = new Date();
   $scope.snakeCase = 'snake_case_for_ruby!';
+  $scope.kebabCase = 'kebab-case-for-bbqs-imo';
   $scope.num = 3294723;
+}]);
+app.controller('pigLatinController', ['$scope', function($scope) {
+  $scope.sample =
 }]);
 
 //$ becomes a

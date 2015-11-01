@@ -5,5 +5,9 @@ app.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'partials/home.html',
       controller: 'exercisesController'
     })
+    .when('/pig-latin', {
+      templateUrl: 'partials/pig-latin.html',
+      controller: 'pigLatinController'
+    })
     .otherwise({redirectTo: '/'})
 }]);

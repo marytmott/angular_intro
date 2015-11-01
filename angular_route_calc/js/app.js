@@ -9,6 +9,6 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       templateUrl: 'partials/calc.html',
       controller: 'calcController'
     })
-    .otherwise({redirectTo: '/'})
+    .otherwise({redirectTo: '/'});
     $locationProvider.html5Mode(true);
 }]);

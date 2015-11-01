@@ -10,13 +10,41 @@ app.filter('kebab', function() {
 
 app.filter('camel', function() {
   return function(input) {
-    //for snake_case
+    var splitArr;
+    var casedArr = [];
+    var camelCased;
+    //break up the word
     if (input.indexOf('_') !== -1) {
-
+      splitArr = input.split('_');
+    } else if (input.indexOf('-') !== -1) {
+      splitArr = input.split('-');
     }
-    /*if include
-      do this
-    else if include
-      do that*/
+
+    //modify it
+    splitArr.forEach(function(word, index) {
+      var cased = '';
+      if (splitArr[index] === splitArr[0]) {
+        casedArr.push(word);
+      } else if (splitArr[index] !== splitArr[0]) {
+        // stash = word;
+        // word[0] = word[0].toUpperCase()
+        // // // splitArr[index[0]] = word[0].toUpperCase();
+        // console.log(word[0]);
+        // casedArr.push(word);
+
+        for (var i = 0; i < word.length; i++) {
+          if (i === 0) {
+            cased += word[i].toUpperCase();
+          } else {
+            cased += word[i];
+          }
+        }
+        console.log(cased);
+        casedArr.push(cased);
+      }
+    });
+    return camelCased = casedArr.join('');
   }
 });
+
+//''

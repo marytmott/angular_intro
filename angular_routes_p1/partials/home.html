@@ -1,6 +1,8 @@
 <p>My favorite color: {{favColor}}</p>
-  <h3>Seconds in a Century: {{secondsInACentury | number}}</h3>
-  <h3>{{rightNow | date: 'EEEE, MMMM dd, yyyy'}}
+  <h3>Seconds in a Century: {{ secondsInACentury | number }}</h3>
+  <h3>{{ rightNow | date: 'EEEE, MMMM dd, yyyy' }}
 
-<p>snake_case: {{snakeCase | kebab }}</p>
+<p>snake_case: {{ snakeCase | camel }}</p>
+<p>kebab-case: {{ kebabCase | camel }}</p>
 <p>number: {{num | kebab }}</p>
+
