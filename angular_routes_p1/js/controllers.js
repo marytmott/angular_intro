@@ -12,7 +12,10 @@ app.controller('exercisesController', ['$scope', function($scope) {
   $scope.num = 3294723;
 }]);
 app.controller('pigLatinController', ['$scope', function($scope) {
-  $scope.sample =
+  $scope.sample;
+}]);
+app.controller('redactController', ['$scope', function($scope) {
+  $scope.redact = 'What can we redact in this sentence?';
 }]);
 
 //$ becomes a

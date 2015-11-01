@@ -9,5 +9,9 @@ app.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'partials/pig-latin.html',
       controller: 'pigLatinController'
     })
+    .when('/redact', {
+      templateUrl: 'partials/redact.html',
+      controller: 'redactController'
+    })
     .otherwise({redirectTo: '/'})
 }]);

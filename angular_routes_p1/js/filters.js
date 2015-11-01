@@ -47,4 +47,8 @@ app.filter('camel', function() {
   }
 });
 
-//''
+app.filter('redact', function() {
+  return function(input, optional1) {
+    return input.replace(optional1, 'REDACTED');
+  }
+});
