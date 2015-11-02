@@ -1,0 +1,7 @@
+<!-- if data -->
+<h3 ng-show="data">Data retrieval successful!</h3>
+<p ng show="data" ng-repeat="(spec, info) in data">{{spec}}: {{info}}</p>
+
+<!-- if error -->
+<h3 ng-show="error">There was an error!</h3>
+<p ng-show="error" ng-repeat="(spec, info) in error">{{spec}}: {{info}}</p>

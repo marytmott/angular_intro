@@ -1,0 +1,20 @@
+<label>Search
+  <input type="text" placeholder="name" ng-model="search.name" />
+</label>
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="contact in contactData | filter: search">
+      <td ng-repeat="(type, info) in contact">
+        {{ info }}
+      </td>
+    </tr>
+  </tbody>
+</table>
