@@ -2,12 +2,12 @@ var app = angular.module('contacts', ['ngRoute']);
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'partials/show.html',
-      controller: 'showContactsController'
+      templateUrl: 'partials/contacts.html',
+      controller: 'contactsController'
     })
-    .when('/add-contact', {
-      templateUrl: 'partials/add_contact.html',
-      controller: 'addContactController'
+    .when('/:name', {
+      templateUrl: 'partials/show.html',
+      controller: 'showContactController'
     })
     .otherwise({redirectTo: '/'});
 }]);
