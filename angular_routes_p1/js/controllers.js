@@ -3,7 +3,7 @@
 //   $scope.secondsInACentury = 60 * 60 * 24 * 365 * 100;
 //   $scope.rightNow = new Date();
 // }]);
-app.controller('exercisesController', ['$scope', function($scope) {
+app.controller('ExercisesController', ['$scope', function($scope) {
   $scope.favColor = 'green';
   $scope.secondsInACentury = 60 * 60 * 24 * 365 * 100;
   $scope.rightNow = new Date();
@@ -11,10 +11,13 @@ app.controller('exercisesController', ['$scope', function($scope) {
   $scope.kebabCase = 'kebab-case-for-bbqs-imo';
   $scope.num = 3294723;
 }]);
-app.controller('pigLatinController', ['$scope', function($scope) {
+app.controller('PigLatinController', ['$scope', function($scope) {
   $scope.sample;
+  $scope.getPigLatin = function() {
+    $scope.output = $scope.sample;
+  }
 }]);
-app.controller('redactController', ['$scope', function($scope) {
+app.controller('RedactController', ['$scope', function($scope) {
   $scope.redact = 'What can we redact in this sentence?';
 }]);
 

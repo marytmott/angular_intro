@@ -1,0 +1,6 @@
+<label>Enter a phrase:
+  <input type="text" ng-model="sample" />
+</label>
+<button ng-click="getPigLatin()">Translate!</button>
+<h4 ng-show="output">Your phrase in Pig Latin:</h4>
+<h3 ng-show="output">{{ output | pigLatin }}</h3>

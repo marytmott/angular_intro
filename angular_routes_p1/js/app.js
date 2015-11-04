@@ -3,15 +3,15 @@ app.config(['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'partials/home.html',
-      controller: 'exercisesController'
+      controller: 'ExercisesController'
     })
     .when('/pig-latin', {
       templateUrl: 'partials/pig-latin.html',
-      controller: 'pigLatinController'
+      controller: 'PigLatinController'
     })
     .when('/redact', {
       templateUrl: 'partials/redact.html',
-      controller: 'redactController'
+      controller: 'RedactController'
     })
     .otherwise({redirectTo: '/'})
 }]);
