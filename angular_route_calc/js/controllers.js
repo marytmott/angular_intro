@@ -1,17 +1,24 @@
-app.controller('homeController', function($scope) {
+app.controller('homeController', ['$scope', function($scope) {
   $scope.formatExample = 'math operation/number1/number2';
   $scope.example = 'add/1/2';
-});
+  $scope.operators = ['add', 'subtract', 'multiply', 'divide'];
+}]);
 
-app.controller('calcController', function($scope, $routeParams) {
+app.controller('calcController', ['$scope', '$routeParams', function($scope, $routeParams) {
   // debugger
-  $scope.operation = $routeParams.operation;
-  $scope.num1 = $routeParams.num1;
-  $scope.num2 = $routeParams.num2;
+  var operation = $routeParams.operation.toLowerCase();
+  var num1 = parseInt($routeParams.num1);
+  var num2 = parseInt($routeParams.num2);
 
-  //isNaN
-  $scope.calculate = function() {
-
+  if (operation === 'add') {
+    $scope.solution = num1 + num2;
+  } else if (operation === 'subtract') {
+    $scope.solution = num1 - num2;
+  } else if (operation === 'multiply') {
+    $scope.solution = num1 * num2;
+  } else if (operation === 'divide') {
+    $scope.solution = num1 / num2;
+  } else {
+    $scope.solution = 'Operation is not valid.'
   }
-
-});
+}]);
