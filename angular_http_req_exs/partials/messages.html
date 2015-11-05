@@ -1,2 +1,17 @@
-<p ng-show="messages">{{ messages }}</p>
+<p>Send a message:</p>
+<form ng-submit="addMessage()">
+  <label>Your name:
+    <input type="text" name="message[name]" ng-model="message.name" />
+  </label>
+  <br />
+  <label>Message:
+    <textarea name="message[content]" placeholder="enter a message to send" ng-model="message.content"></textarea>
+  <br />
+  </label>
+  <button>Submit</button>
+</form>
+<h3>Messages:</h3>
 <p ng-show="error">{{ error }}</p>
+<ul>
+  <li ng-show="messages" ng-repeat="message in messages">{{ message.name }}: {{ message.content }}</li>
+</ul>

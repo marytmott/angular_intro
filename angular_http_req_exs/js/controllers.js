@@ -18,13 +18,30 @@ app.controller('invalidTestController', ['$scope', '$http', function($scope, $ht
   });
 }]);
 app.controller('messagesController', ['$scope', '$http', function($scope, $http) {
-  $http.get('https://still-tundra-8387.herokuapp.com').then(function(res) {
-    if (res) {
-      $scope.messages = res;
-    }
-  }, function(res) {
-    if (res) {
-      $scope.error = res;
-    }
-  });
+  var url = 'https://still-tundra-8387.herokuapp.com/messages';
+  function getMessages() {
+    $http.get(url).then(function(res) {
+      if (res) {
+        $scope.messages = res.data;
+      }
+    }, function(res) {
+      if (res) {
+        $scope.error = 'error!';
+      }
+    });
+  }
+  getMessages();
+  $scope.addMessage = function() {
+
+    console.log($scope.message);
+    $http.post(url, {
+      message: $scope.message
+    }).then(function(data) {
+      $scope.message = {};
+      getMessages();
+    });
+  }
 }]);
+
+// .success()
+// .error()
